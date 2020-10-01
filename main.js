@@ -5,7 +5,9 @@ var app = new Vue({
         description: "Socks scks ? .... !-!",
         image: "./images/vmSocks-green-onWhite.jpg",
         altText: "Pair of Socks",
-        outSidesrc: "https://en.wikipedia.org/wiki/Sock"
+        outSidesrc: "https://en.wikipedia.org/wiki/Sock",
+        inventory: 11,
+        onSale: true
     }
 
 })
