@@ -7,7 +7,19 @@ var app = new Vue({
         altText: "Pair of Socks",
         outSidesrc: "https://en.wikipedia.org/wiki/Sock",
         inventory: 11,
-        onSale: true
+        onSale: true,
+        details: ["80% cotton", "20% polyester", "Gender-Neutral"],
+        variants: [
+            {
+                variantId:1234,
+                variantColor:"Green"
+            },
+            {
+                variantId:1235,
+                variantColor:"Blue"
+            }
+        ],
+        sizes: ["34 - 37","38 - 42","43 - 47"]
     }
 
 })
