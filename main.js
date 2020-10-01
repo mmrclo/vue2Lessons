@@ -3,7 +3,7 @@ var app = new Vue({
     data: {
         product: "Socks",
         description: "Socks scks ? .... !-!",
-        image: "./images/vmSocks-green-onWhite.jpg",
+        image: "./images/vmSocks-blue-onWhite.jpg",
         altText: "Pair of Socks",
         outSidesrc: "https://en.wikipedia.org/wiki/Sock",
         inventory: 11,
@@ -12,14 +12,28 @@ var app = new Vue({
         variants: [
             {
                 variantId:1234,
-                variantColor:"Green"
+                variantColor:"Green",
+                variantImage: "./images/vmSocks-green-onWhite.jpg"
             },
             {
                 variantId:1235,
-                variantColor:"Blue"
+                variantColor:"Blue",
+                variantImage: "./images/vmSocks-blue-onWhite.jpg"
             }
         ],
-        sizes: ["34 - 37","38 - 42","43 - 47"]
+        sizes: ["34 - 37","38 - 42","43 - 47"],
+        cart: 0
+    },
+    methods: {
+        addToCart() {
+            this.cart += 1
+        },
+        updateProduct(variantImage){
+            this.image = variantImage;
+        },
+        rmvFromCart: function() {
+            this.cart -= 1
+        }
     }
 
 })

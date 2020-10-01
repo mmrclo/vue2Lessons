@@ -24,14 +24,30 @@
             <ul>
                 <li v-for="detail in details">{{detail}}</li>
             </ul>
+        
         <div v-for="variant in variants" :key="variant.variantId">
-            <p>{{variant.variantColor}}</p>
+            <p @mouseover="updateProduct(variant.variantImage)">
+                {{variant.variantColor}}
+            </p>
         </div>
+        
         <ul v-for="size in sizes">
             <li>{{size}}</li>
         </ul>
-            <a v-bind:href="outSidesrc" target="_blank">What is socks ?</a>
-        </div>
+            
+        <a v-bind:href="outSidesrc" target="_blank">What is socks ?</a><br>
+        <table>    
+        <tr>
+            <td><button v-on:click="addToCart">Add to cart</button></td>
+            <td><button v-on:click="rmvFromCart">Remove from cart</button></td>
+            <td>
+                <div class="cart">
+                    <p>Cart ({{ cart }})</p>   
+                </div>
+            </td>
+            </tr>
+        </table>
+    </div>
     </div>
 </div>
 
