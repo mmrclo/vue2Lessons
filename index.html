@@ -20,25 +20,35 @@
             <span v-if="onSale">On sale!</span>
             <p v-if="inventory > 10">In stock</p>
             <p v-else-if="inventory > 0 && inventory <= 10 ">Almost Out of stock</p>
-            <p v-else>Out of stock</p>
+            <p v-else id="lineThrough"
+            
+            >Out of stock</p>
             <ul>
                 <li v-for="detail in details">{{detail}}</li>
             </ul>
         
-        <div v-for="variant in variants" :key="variant.variantId">
-            <p @mouseover="updateProduct(variant.variantImage)">
-                {{variant.variantColor}}
-            </p>
-        </div>
+            <div  class="color-box"
+                  v-for="variant in variants"
+                  :key="variant.variantId"
+                  :style="{ backgroundColor: variant.variantColor }"
+                  @mouseover="updateProduct(variant.variantImage)"
+                  >
+            </div>
+                
+        
         
         <ul v-for="size in sizes">
             <li>{{size}}</li>
         </ul>
-            
+          
         <a v-bind:href="outSidesrc" target="_blank">What is socks ?</a><br>
         <table>    
         <tr>
-            <td><button v-on:click="addToCart">Add to cart</button></td>
+            <td><button v-on:click="addToCart" 
+                        :disabled="!inStock"
+                        :class="{disabledButton: !inStock }"
+                        >Add to cart
+            </button></td>
             <td><button v-on:click="rmvFromCart">Remove from cart</button></td>
             <td>
                 <div class="cart">
@@ -48,6 +58,7 @@
             </tr>
         </table>
     </div>
+</div>
     </div>
 </div>
 

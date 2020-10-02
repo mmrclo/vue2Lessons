@@ -6,7 +6,7 @@ var app = new Vue({
         image: "./images/vmSocks-blue-onWhite.jpg",
         altText: "Pair of Socks",
         outSidesrc: "https://en.wikipedia.org/wiki/Sock",
-        inventory: 11,
+        inventory: 13,
         onSale: true,
         details: ["80% cotton", "20% polyester", "Gender-Neutral"],
         variants: [
@@ -22,7 +22,8 @@ var app = new Vue({
             }
         ],
         sizes: ["34 - 37","38 - 42","43 - 47"],
-        cart: 0
+        cart: 0,
+        inStock: true
     },
     methods: {
         addToCart() {
@@ -31,9 +32,16 @@ var app = new Vue({
         updateProduct(variantImage){
             this.image = variantImage;
         },
-        rmvFromCart: function() {
+        rmvFromCart: function() { //BEFORE ES6
             this.cart -= 1
-        }
+        },
+        stock() {
+            if(this.inventory > 0) this.inStock = true;
+            else this.inStock = false;
+        } 
+    },
+    beforeMount(){
+        this.stock();
     }
 
 })
