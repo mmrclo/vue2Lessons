@@ -7,62 +7,15 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<div class="nav-bar"></div>
-<div id="app">
-    <div class="product">
-        <div class="product-image">
-            <img v-bind:src="image" v-bind:alt="altText"/>
-        </div>
-
-        <div class="product-info">
-            <h1 v-if="onSale" v-bind:src="title" > {{title}} </h1>
-            <p> {{description}} </p>
-            <span v-if="onSale">On sale!</span>
-            <p v-if="inStock">In stock</p>
-            <!--<p v-else-if="inventory > 0 && inventory <= 10 ">Almost Out of stock</p>-->
-            <p v-else id="lineThrough"
-            
-            >Out of stock</p>
-            <ul>
-                <li v-for="detail in details">{{detail}}</li>
-            </ul>
+    <div class="nav-bar"></div>
+    <div id="app">
+        <product :premium="premium"></product>
         
-            <div  class="color-box"
-                  v-for="(variant, index) in variants"
-                  :key="variant.variantId"
-                  :style="{ backgroundColor: variant.variantColor }"
-                  @mouseover="updateProduct(index)"
-                  >
-            </div>
-                
-        
-        
-        <ul v-for="size in sizes">
-            <li>{{size}}</li>
-        </ul>
-          
-        <a v-bind:href="outSidesrc" target="_blank">What is socks ?</a><br>
-        <table>    
-        <tr>
-            <td><button v-on:click="addToCart" 
-                        :disabled="!inStock"
-                        :class="{disabledButton: !inStock }"
-                        >Add to cart
-            </button></td>
-            <td><button v-on:click="rmvFromCart">Remove from cart</button></td>
-            <td>
-                <div class="cart">
-                    <p>Cart ({{ cart }})</p>   
-                </div>
-            </td>
-            </tr>
-        </table>
     </div>
-</div>
     </div>
-</div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script> <!--https://cdn.jsdelivr.net/npm/vue-->
+    
     <script src="main.js"></script>
 </body>
 </html>
